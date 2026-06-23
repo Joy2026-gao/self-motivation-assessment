@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自驱力线上测评</title>
+    <link rel="stylesheet" href="./styles-current.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Self Motivation Assessment</p>
+          <h1 id="page-title">自驱力线上测评</h1>
+          <p class="hero-text">
+            基于驱动力 3.0 与工作动机需求理论，快速完成一份简版自评，了解你的动力线索和更适配的工作情境。
+          </p>
+          <p class="version-note">当前版本：三项完整报告版</p>
+        </div>
+        <div class="hero-panel" aria-label="测评概览">
+          <div>
+            <span class="metric" id="question-count">15</span>
+            <span class="metric-label">道题</span>
+          </div>
+          <div>
+            <span class="metric">1-5</span>
+            <span class="metric-label">分量表</span>
+          </div>
+          <div>
+            <span class="metric">3</span>
+            <span class="metric-label">维画像</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="side-panel" aria-label="测评选择">
+          <div class="panel-header">
+            <p class="section-kicker">选择测评</p>
+            <h2>建议先从哪一项开始？</h2>
+            <p class="panel-note">
+              三项测评是互补视角：先看心理条件，再看内在方向，最后用驱动力 2.0 补充判断。
+            </p>
+          </div>
+          <div class="assessment-tabs" role="tablist" aria-label="测评类型">
+            <button class="assessment-tab tab-needs active" type="button" data-assessment="needs">
+              <strong class="tab-mark">心理条件</strong>
+              <span>工作动机需求</span>
+              <small>自主性 / 胜任感 / 归属感</small>
+            </button>
+            <button class="assessment-tab tab-drive" type="button" data-assessment="drive">
+              <strong class="tab-mark">内在方向</strong>
+              <span>驱动力 3.0</span>
+              <small>自主 / 专精 / 目的</small>
+            </button>
+            <button class="assessment-tab tab-external" type="button" data-assessment="external">
+              <strong class="tab-mark">外在条件</strong>
+              <span>驱动力 2.0 补充自评</span>
+              <small>回报 / 外部认可 / 规则</small>
+            </button>
+          </div>
+          <div class="progress-card">
+            <div class="progress-top">
+              <span>完成进度</span>
+              <strong id="progress-text">0%</strong>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <span id="progress-bar"></span>
+            </div>
+          </div>
+          <button class="ghost-button" id="reset-button" type="button">重新作答</button>
+        </aside>
+
+        <section class="assessment-panel" aria-live="polite">
+          <div class="assessment-intro">
+            <div>
+              <p class="section-kicker" id="assessment-kicker">基础心理需求</p>
+              <h2 id="assessment-title">工作动机需求简版自评</h2>
+            </div>
+            <p id="assessment-description">
+              请根据真实感受评分：1=完全不同意，5=完全同意。系统会生成一份简版结果解读，帮助你观察哪些心理条件更能支持投入。
+            </p>
+          </div>
+
+          <form id="quiz-form" class="quiz-form"></form>
+
+          <div class="actions">
+            <button class="primary-button" id="result-button" type="button">保存并继续</button>
+            <button class="secondary-button" id="print-button" type="button" hidden>下载解读 / 打印</button>
+          </div>
+          <p class="action-status" id="action-status" aria-live="polite"></p>
+        </section>
+      </section>
+
+      <section class="result-section" id="result-section" hidden></section>
+    </main>
+
+    <script src="./app-current.js"></script>
+  </body>
+</html>
