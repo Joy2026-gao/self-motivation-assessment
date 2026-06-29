@@ -1073,9 +1073,9 @@ function downloadReport() {
   }
 
   showFullResults();
-  const fileName = "自驱力完整测评结果解读.html";
-  const html = buildReportHtml();
-  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const fileName = "自驱力完整测评结果解读.txt";
+  const reportText = buildReportText();
+  const blob = new Blob([reportText], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
@@ -1084,7 +1084,24 @@ function downloadReport() {
   link.click();
   link.remove();
   URL.revokeObjectURL(url);
-  actionStatus.textContent = "结果解读已生成。打开下载的 HTML 文件后，可使用浏览器打印或另存为 PDF。";
+  actionStatus.textContent = "文本版报告已生成。手机上可直接打开、转发或复制保存。";
+}
+
+function buildReportText() {
+  const createdAt = new Date().toLocaleString("zh-CN", { hour12: false });
+  const text = resultSection.innerText
+    .replace(/\n{3,}/g, "\n\n")
+    .replace(/[ \t]+\n/g, "\n")
+    .trim();
+
+  return [
+    "自驱力完整测评结果解读",
+    `生成时间：${createdAt}`,
+    "",
+    text,
+    "",
+    "说明：本工具用于自我觉察与工作设计讨论，不等同于标准化心理测验常模。"
+  ].join("\n");
 }
 
 function buildReportHtml() {
